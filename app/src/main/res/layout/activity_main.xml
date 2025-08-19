@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <Button
+            android:id="@+id/btn_patient_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Patient Details" />
+
+        <Button
+            android:id="@+id/btn_upload_prescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload Doctor Prescription" />
+
+        <Button
+            android:id="@+id/btn_manual_entry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manual Medicine Entry" />
+
+        <Button
+            android:id="@+id/btn_daily_tracker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Daily Medicine Tracker" />
+
+        <Button
+            android:id="@+id/btn_reminder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Medicine Reminder" />
+
+        <Button
+            android:id="@+id/btn_add_medicine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Medicine Quantity" />
+
+        <Button
+            android:id="@+id/btn_stock_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Medicine Stock Status" />
+
+        <Button
+            android:id="@+id/btn_upload_bill"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload Medical Store Bill" />
+    </LinearLayout>
+</ScrollView>
