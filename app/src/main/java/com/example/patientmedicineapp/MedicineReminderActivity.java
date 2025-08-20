@@ -45,7 +45,7 @@ public class MedicineReminderActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Medicine Reminder");
         }
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").allowMainThreadQueries().build();
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").fallbackToDestructiveMigration().allowMainThreadQueries().build();
         spinnerPatients = findViewById(R.id.spinner_patients);
         spinnerMedicines = findViewById(R.id.spinner_medicines);
         timePicker = findViewById(R.id.time_picker);

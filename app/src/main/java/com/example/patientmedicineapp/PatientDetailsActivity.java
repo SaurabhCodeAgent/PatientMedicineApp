@@ -37,7 +37,7 @@ public class PatientDetailsActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Patient Details");
         }
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").allowMainThreadQueries().build();
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").fallbackToDestructiveMigration().allowMainThreadQueries().build();
         RecyclerView rvPatients = findViewById(R.id.rv_patients);
         rvPatients.setLayoutManager(new LinearLayoutManager(this));
         patientList = db.patientDao().getAllPatients();

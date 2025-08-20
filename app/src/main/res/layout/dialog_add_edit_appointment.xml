@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <EditText
+            android:id="@+id/et_doctor_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Doctor Name"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/et_doctor_specialty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Doctor Specialty"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/et_appointment_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Appointment Date (yyyy-MM-dd)"
+            android:inputType="date"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/et_appointment_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Appointment Time (HH:mm)"
+            android:inputType="time"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/et_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Notes"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:layout_marginBottom="12dp"/>
+
+        <CheckBox
+            android:id="@+id/cb_reminder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Set Reminder"
+            android:checked="true"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btn_save_appointment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Appointment"/>
+    </LinearLayout>
+</ScrollView>

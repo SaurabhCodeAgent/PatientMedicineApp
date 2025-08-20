@@ -44,7 +44,7 @@ public class AddMedicineActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Add Medicine Quantity");
         }
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").allowMainThreadQueries().build();
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").fallbackToDestructiveMigration().allowMainThreadQueries().build();
         spinnerPatients = findViewById(R.id.spinner_patients);
         spinnerMedicines = findViewById(R.id.spinner_medicines);
         tvCurrentStock = findViewById(R.id.tv_current_stock);

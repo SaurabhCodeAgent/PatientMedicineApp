@@ -38,7 +38,7 @@ public class StockStatusActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Medicine Stock Status");
         }
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").allowMainThreadQueries().build();
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").fallbackToDestructiveMigration().allowMainThreadQueries().build();
         spinnerPatients = findViewById(R.id.spinner_patients);
         RecyclerView rvStock = findViewById(R.id.rv_stock);
         rvStock.setLayoutManager(new LinearLayoutManager(this));

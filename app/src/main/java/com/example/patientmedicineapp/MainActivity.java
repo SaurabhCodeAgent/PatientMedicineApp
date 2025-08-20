@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Add Medicine Quantity"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Stock Status"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Upload Bill"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Doctor Appointments"));
         FeatureAdapter adapter = new FeatureAdapter(features, position -> {
             switch (position) {
                 case 0:
@@ -50,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 7:
                     startActivity(new Intent(this, UploadBillActivity.class));
+                    break;
+                case 8:
+                    startActivity(new Intent(this, DoctorAppointmentActivity.class));
                     break;
             }
         });

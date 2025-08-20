@@ -45,7 +45,7 @@ public class DailyTrackerActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Daily Medicine Tracker");
         }
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").allowMainThreadQueries().build();
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").fallbackToDestructiveMigration().allowMainThreadQueries().build();
         spinnerPatients = findViewById(R.id.spinner_patients);
         RecyclerView rvTracker = findViewById(R.id.rv_tracker);
         rvTracker.setLayoutManager(new LinearLayoutManager(this));

@@ -52,7 +52,7 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Upload Prescription");
         }
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").allowMainThreadQueries().build();
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").fallbackToDestructiveMigration().allowMainThreadQueries().build();
         spinnerPatients = findViewById(R.id.spinner_patients);
         Button btnUpload = findViewById(R.id.btn_upload_prescription);
         RecyclerView rvPrescriptions = findViewById(R.id.rv_prescriptions);

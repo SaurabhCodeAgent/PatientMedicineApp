@@ -25,7 +25,9 @@
         <activity android:name=".AddMedicineActivity" />
         <activity android:name=".StockStatusActivity" />
         <activity android:name=".UploadBillActivity" />
+        <activity android:name=".DoctorAppointmentActivity" />
         <receiver android:name=".MedicineReminderReceiver" />
+        <receiver android:name=".AppointmentReminderReceiver" />
     </application>
 
 </manifest>
