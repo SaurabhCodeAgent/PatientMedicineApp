@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Stock Status"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Upload Bill"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Doctor Appointments"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_weight, "Health Tracker"));
         FeatureAdapter adapter = new FeatureAdapter(features, position -> {
             switch (position) {
                 case 0:
@@ -54,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 8:
                     startActivity(new Intent(this, DoctorAppointmentActivity.class));
+                    break;
+                case 9:
+                    startActivity(new Intent(this, WeightTrackerActivity.class));
                     break;
             }
         });

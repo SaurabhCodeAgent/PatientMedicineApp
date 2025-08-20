@@ -1,5 +1,6 @@
 package com.example.patientmedicineapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -95,6 +96,7 @@ public class AddMedicineActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint({"GestureBackNavigation", "MissingSuperCall"})
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, MainActivity.class);

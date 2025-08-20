@@ -9,7 +9,20 @@ public class Patient {
     public int id;
     public String name;
     public int age;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String gender;
     public String contact;
     public String address;
+
+    public String getName() {
+        return "";
+    }
+
+    public int getId() {
+        return 0;
+    }
 }
