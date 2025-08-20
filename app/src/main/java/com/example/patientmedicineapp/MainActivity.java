@@ -3,8 +3,10 @@ package com.example.patientmedicineapp;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -12,62 +14,45 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnPatientDetails = findViewById(R.id.btn_patient_details);
-        Button btnUploadPrescription = findViewById(R.id.btn_upload_prescription);
-        Button btnManualEntry = findViewById(R.id.btn_manual_entry);
-        Button btnDailyTracker = findViewById(R.id.btn_daily_tracker);
-        Button btnReminder = findViewById(R.id.btn_reminder);
-        Button btnAddMedicine = findViewById(R.id.btn_add_medicine);
-        Button btnStockStatus = findViewById(R.id.btn_stock_status);
-        Button btnUploadBill = findViewById(R.id.btn_upload_bill);
-
-        btnPatientDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, PatientDetailsActivity.class));
+        RecyclerView rvFeatures = findViewById(R.id.rv_features);
+        rvFeatures.setLayoutManager(new GridLayoutManager(this, 2));
+        List<FeatureAdapter.FeatureItem> features = new ArrayList<>();
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Patient Details"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Upload Prescription"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Manual Medicine Entry"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Daily Medicine Tracker"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Medicine Reminder"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Add Medicine Quantity"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Stock Status"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Upload Bill"));
+        FeatureAdapter adapter = new FeatureAdapter(features, position -> {
+            switch (position) {
+                case 0:
+                    startActivity(new Intent(this, PatientDetailsActivity.class));
+                    break;
+                case 1:
+                    startActivity(new Intent(this, UploadPrescriptionActivity.class));
+                    break;
+                case 2:
+                    startActivity(new Intent(this, ManualEntryActivity.class));
+                    break;
+                case 3:
+                    startActivity(new Intent(this, DailyTrackerActivity.class));
+                    break;
+                case 4:
+                    startActivity(new Intent(this, MedicineReminderActivity.class));
+                    break;
+                case 5:
+                    startActivity(new Intent(this, AddMedicineActivity.class));
+                    break;
+                case 6:
+                    startActivity(new Intent(this, StockStatusActivity.class));
+                    break;
+                case 7:
+                    startActivity(new Intent(this, UploadBillActivity.class));
+                    break;
             }
         });
-        btnUploadPrescription.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, UploadPrescriptionActivity.class));
-            }
-        });
-        btnManualEntry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ManualEntryActivity.class));
-            }
-        });
-        btnDailyTracker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, DailyTrackerActivity.class));
-            }
-        });
-        btnReminder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MedicineReminderActivity.class));
-            }
-        });
-        btnAddMedicine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AddMedicineActivity.class));
-            }
-        });
-        btnStockStatus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, StockStatusActivity.class));
-            }
-        });
-        btnUploadBill.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, UploadBillActivity.class));
-            }
-        });
+        rvFeatures.setAdapter(adapter);
     }
 }

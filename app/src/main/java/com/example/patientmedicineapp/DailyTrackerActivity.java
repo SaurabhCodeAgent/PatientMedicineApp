@@ -1,5 +1,6 @@
 package com.example.patientmedicineapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -38,6 +39,12 @@ public class DailyTrackerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_tracker);
 
+        // Enable back button in action bar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Daily Medicine Tracker");
+        }
+
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").allowMainThreadQueries().build();
         spinnerPatients = findViewById(R.id.spinner_patients);
         RecyclerView rvTracker = findViewById(R.id.rv_tracker);
@@ -63,6 +70,20 @@ public class DailyTrackerActivity extends AppCompatActivity {
                 selectedPatientId = -1;
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 
     private void loadMedicinesAndTrackers() {

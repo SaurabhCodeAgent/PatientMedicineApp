@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@drawable/card_background_with_border"
+    android:elevation="8dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/iv_feature_icon"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:contentDescription="Feature Icon"
+        android:tint="@color/primary_color"
+        android:background="@drawable/circle_background"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/tv_feature_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Feature"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/text_primary"
+        android:gravity="center"/>
+</LinearLayout>
