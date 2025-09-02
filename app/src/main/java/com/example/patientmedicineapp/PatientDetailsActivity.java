@@ -37,25 +37,32 @@ public class PatientDetailsActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Patient Details");
         }
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").fallbackToDestructiveMigration().allowMainThreadQueries().build();
-        RecyclerView rvPatients = findViewById(R.id.rv_patients);
-        rvPatients.setLayoutManager(new LinearLayoutManager(this));
-        patientList = db.patientDao().getAllPatients();
-        adapter = new PatientAdapter(patientList, new PatientAdapter.OnPatientClickListener() {
-            @Override
-            public void onPatientClick(Patient patient) {
-                showAddEditDialog(patient);
-            }
-        });
-        rvPatients.setAdapter(adapter);
+        try {
+            // Initialize database
+            db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db")
+                    .fallbackToDestructiveMigration() // This will wipe and rebuild the database if the schema changes
+                    .allowMainThreadQueries()
+                    .build();
 
-        Button btnAdd = findViewById(R.id.btn_add_patient);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showAddEditDialog(null);
-            }
-        });
+            // Initialize the RecyclerView
+            RecyclerView rvPatients = findViewById(R.id.rv_patients);
+            rvPatients.setLayoutManager(new LinearLayoutManager(this));
+            
+            // Load patients
+            patientList = db.patientDao().getAllPatients();
+            adapter = new PatientAdapter(patientList, patient -> showAddEditDialog(patient));
+            rvPatients.setAdapter(adapter);
+
+            // Setup Add button
+            Button btnAdd = findViewById(R.id.btn_add_patient);
+            btnAdd.setOnClickListener(v -> showAddEditDialog(null));
+            
+        } catch (Exception e) {
+            Toast.makeText(this, "Error initializing: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+            finish();
+            return;
+        }
     }
 
     @Override
@@ -78,48 +85,79 @@ public class PatientDetailsActivity extends AppCompatActivity {
         builder.setView(view);
         AlertDialog dialog = builder.create();
 
-        EditText etName = view.findViewById(R.id.et_name);
+        EditText etFirstName = view.findViewById(R.id.et_first_name);
+        EditText etLastName = view.findViewById(R.id.et_last_name);
         EditText etAge = view.findViewById(R.id.et_age);
         EditText etGender = view.findViewById(R.id.et_gender);
+        EditText etCountryCode = view.findViewById(R.id.et_country_code);
         EditText etContact = view.findViewById(R.id.et_contact);
-        EditText etAddress = view.findViewById(R.id.et_address);
+        EditText etStreetAddress = view.findViewById(R.id.et_street_address);
+        EditText etCity = view.findViewById(R.id.et_city);
+        EditText etState = view.findViewById(R.id.et_state);
+        EditText etPostalCode = view.findViewById(R.id.et_postal_code);
+        EditText etCountry = view.findViewById(R.id.et_country);
         Button btnSave = view.findViewById(R.id.btn_save_patient);
 
         if (patient != null) {
-            etName.setText(patient.name);
+            etFirstName.setText(patient.firstName);
+            etLastName.setText(patient.lastName);
             etAge.setText(String.valueOf(patient.age));
             etGender.setText(patient.gender);
+            etCountryCode.setText(patient.countryCode);
             etContact.setText(patient.contact);
-            etAddress.setText(patient.address);
+            etStreetAddress.setText(patient.streetAddress);
+            etCity.setText(patient.city);
+            etState.setText(patient.state);
+            etPostalCode.setText(patient.postalCode);
+            etCountry.setText(patient.country);
         }
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = etName.getText().toString().trim();
+                String firstName = etFirstName.getText().toString().trim();
+                String lastName = etLastName.getText().toString().trim();
                 String ageStr = etAge.getText().toString().trim();
                 String gender = etGender.getText().toString().trim();
+                String countryCode = etCountryCode.getText().toString().trim();
                 String contact = etContact.getText().toString().trim();
-                String address = etAddress.getText().toString().trim();
-                if (TextUtils.isEmpty(name) || TextUtils.isEmpty(ageStr) || TextUtils.isEmpty(gender)) {
-                    Toast.makeText(PatientDetailsActivity.this, "Name, Age, Gender required", Toast.LENGTH_SHORT).show();
+                String streetAddress = etStreetAddress.getText().toString().trim();
+                String city = etCity.getText().toString().trim();
+                String state = etState.getText().toString().trim();
+                String postalCode = etPostalCode.getText().toString().trim();
+                String country = etCountry.getText().toString().trim();
+                
+                if (TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || TextUtils.isEmpty(ageStr) || TextUtils.isEmpty(gender)) {
+                    Toast.makeText(PatientDetailsActivity.this, "First Name, Last Name, Age, Gender required", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 int age = Integer.parseInt(ageStr);
                 if (patient == null) {
                     Patient newPatient = new Patient();
-                    newPatient.name = name;
+                    newPatient.firstName = firstName;
+                    newPatient.lastName = lastName;
                     newPatient.age = age;
                     newPatient.gender = gender;
+                    newPatient.countryCode = countryCode;
                     newPatient.contact = contact;
-                    newPatient.address = address;
+                    newPatient.streetAddress = streetAddress;
+                    newPatient.city = city;
+                    newPatient.state = state;
+                    newPatient.postalCode = postalCode;
+                    newPatient.country = country;
                     db.patientDao().insert(newPatient);
                 } else {
-                    patient.name = name;
+                    patient.firstName = firstName;
+                    patient.lastName = lastName;
                     patient.age = age;
                     patient.gender = gender;
+                    patient.countryCode = countryCode;
                     patient.contact = contact;
-                    patient.address = address;
+                    patient.streetAddress = streetAddress;
+                    patient.city = city;
+                    patient.state = state;
+                    patient.postalCode = postalCode;
+                    patient.country = country;
                     db.patientDao().update(patient);
                 }
                 refreshList();
@@ -130,8 +168,13 @@ public class PatientDetailsActivity extends AppCompatActivity {
     }
 
     private void refreshList() {
-        patientList.clear();
-        patientList.addAll(db.patientDao().getAllPatients());
-        adapter.notifyDataSetChanged();
+        try {
+            patientList.clear();
+            patientList.addAll(db.patientDao().getAllPatients());
+            adapter.notifyDataSetChanged();
+        } catch (Exception e) {
+            Toast.makeText(this, "Error refreshing list: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
     }
 }

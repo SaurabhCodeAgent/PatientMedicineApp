@@ -7,7 +7,8 @@ import androidx.room.PrimaryKey;
 public class Patient {
     @PrimaryKey(autoGenerate = true)
     public int id;
-    public String name;
+    public String firstName;
+    public String lastName;
     public int age;
 
     public void setId(int id) {
@@ -15,14 +16,19 @@ public class Patient {
     }
 
     public String gender;
+    public String countryCode;
     public String contact;
-    public String address;
+    public String streetAddress;
+    public String city;
+    public String state;
+    public String postalCode;
+    public String country;
 
     public String getName() {
-        return "";
+        return firstName + " " + lastName;
     }
 
     public int getId() {
-        return 0;
+        return id;
     }
 }

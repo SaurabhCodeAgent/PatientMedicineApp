@@ -55,7 +55,7 @@ public class DailyTrackerActivity extends AppCompatActivity {
         today = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         patients = db.patientDao().getAllPatients();
         List<String> patientNames = new ArrayList<>();
-        for (Patient p : patients) patientNames.add(p.name);
+        for (Patient p : patients) patientNames.add(p.firstName + " " + p.lastName);
         patientAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, patientNames);
         patientAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPatients.setAdapter(patientAdapter);

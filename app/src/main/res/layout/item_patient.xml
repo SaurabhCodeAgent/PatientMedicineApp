@@ -3,8 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp"
-    android:background="@android:color/white">
+    android:padding="16dp"
+    android:layout_margin="8dp"
+    android:background="@color/surface_color"
+    android:elevation="2dp">
 
     <TextView
         android:id="@+id/tv_patient_name"
@@ -12,12 +14,33 @@
         android:layout_height="wrap_content"
         android:text="Name"
         android:textStyle="bold"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:textColor="@color/text_primary"/>
 
     <TextView
         android:id="@+id/tv_patient_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Age, Gender, Contact"
-        android:textSize="14sp"/>
+        android:text="Age, Gender"
+        android:textSize="14sp"
+        android:textColor="@color/text_secondary"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tv_patient_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact"
+        android:textSize="14sp"
+        android:textColor="@color/text_secondary"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tv_patient_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textSize="14sp"
+        android:textColor="@color/text_secondary"
+        android:layout_marginTop="4dp"/>
 </LinearLayout>

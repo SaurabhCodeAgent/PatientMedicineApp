@@ -74,7 +74,7 @@ public class DoctorAppointmentActivity extends AppCompatActivity {
 
         patients = db.patientDao().getAllPatients();
         List<String> patientNames = new ArrayList<>();
-        for (Patient p : patients) patientNames.add(p.name);
+        for (Patient p : patients) patientNames.add(p.firstName + " " + p.lastName);
         patientAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, patientNames);
         patientAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPatients.setAdapter(patientAdapter);
@@ -223,7 +223,7 @@ public class DoctorAppointmentActivity extends AppCompatActivity {
 
     private String getPatientName(int patientId) {
         for (Patient p : patients) {
-            if (p.id == patientId) return p.name;
+            if (p.id == patientId) return p.firstName + " " + p.lastName;
         }
         return "Unknown Patient";
     }

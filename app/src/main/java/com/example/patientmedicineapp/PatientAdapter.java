@@ -31,8 +31,32 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientV
     @Override
     public void onBindViewHolder(@NonNull PatientViewHolder holder, int position) {
         Patient patient = patients.get(position);
-        holder.tvName.setText(patient.name);
-        holder.tvInfo.setText("Age: " + patient.age + ", Gender: " + patient.gender + ", Contact: " + patient.contact);
+        String firstName = patient.firstName != null ? patient.firstName : "";
+        String lastName = patient.lastName != null ? patient.lastName : "";
+        holder.tvName.setText(firstName + " " + lastName);
+        
+        String gender = patient.gender != null ? patient.gender : "";
+        holder.tvInfo.setText("Age: " + patient.age + ", Gender: " + gender);
+        
+        String countryCode = patient.countryCode != null ? patient.countryCode : "";
+        String contact = patient.contact != null ? patient.contact : "";
+        holder.tvContact.setText(countryCode + " " + contact);
+        
+        String streetAddress = patient.streetAddress != null ? patient.streetAddress : "";
+        String city = patient.city != null ? patient.city : "";
+        String state = patient.state != null ? patient.state : "";
+        String postalCode = patient.postalCode != null ? patient.postalCode : "";
+        String country = patient.country != null ? patient.country : "";
+        
+        String address = "";
+        if (!streetAddress.isEmpty()) {
+            address = streetAddress;
+            if (!city.isEmpty()) address += ", " + city;
+            if (!state.isEmpty()) address += ", " + state;
+            if (!postalCode.isEmpty()) address += " " + postalCode;
+            if (!country.isEmpty()) address += ", " + country;
+        }
+        holder.tvAddress.setText(address);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,11 +71,13 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientV
     }
 
     static class PatientViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvInfo;
+        TextView tvName, tvInfo, tvContact, tvAddress;
         PatientViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tv_patient_name);
             tvInfo = itemView.findViewById(R.id.tv_patient_info);
+            tvContact = itemView.findViewById(R.id.tv_patient_contact);
+            tvAddress = itemView.findViewById(R.id.tv_patient_address);
         }
     }
 }
