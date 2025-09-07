@@ -95,19 +95,40 @@ public class DailyTrackerActivity extends AppCompatActivity {
     }
 
     private void onMedicineChecked(Medicine medicine, boolean checked) {
-        MedicineTracker tracker = db.medicineTrackerDao().getTracker(selectedPatientId, medicine.id, today);
-        if (tracker == null) {
-            tracker = new MedicineTracker();
-            tracker.patientId = selectedPatientId;
-            tracker.medicineId = medicine.id;
-            tracker.date = today;
-            tracker.taken = checked;
-            db.medicineTrackerDao().insert(tracker);
-        } else {
-            tracker.taken = checked;
-            db.medicineTrackerDao().update(tracker);
+        try {
+            MedicineTracker tracker = db.medicineTrackerDao().getTracker(selectedPatientId, medicine.id, today);
+            boolean wasCheckedBefore = tracker != null && tracker.taken;
+            
+            if (tracker == null) {
+                tracker = new MedicineTracker();
+                tracker.patientId = selectedPatientId;
+                tracker.medicineId = medicine.id;
+                tracker.date = today;
+                tracker.taken = checked;
+                db.medicineTrackerDao().insert(tracker);
+            } else {
+                tracker.taken = checked;
+                db.medicineTrackerDao().update(tracker);
+            }
+
+            // Update medicine stock
+            if (checked && !wasCheckedBefore && medicine.quantity > 0) {
+                medicine.quantity--;
+                db.medicineDao().update(medicine);
+            } else if (!checked && wasCheckedBefore) {
+                medicine.quantity++;
+                db.medicineDao().update(medicine);
+            }
+
+            if (checked && medicine.quantity <= 3) {
+                Toast.makeText(this, "Warning: Only " + medicine.quantity + " doses left of " + medicine.name, Toast.LENGTH_LONG).show();
+            }
+
+            loadMedicinesAndTrackers();
+            Toast.makeText(this, medicine.name + (checked ? " marked as taken" : " marked as not taken"), Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "Error updating medicine status: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
-        loadMedicinesAndTrackers();
-        Toast.makeText(this, medicine.name + (checked ? " marked as taken" : " marked as not taken"), Toast.LENGTH_SHORT).show();
     }
 }

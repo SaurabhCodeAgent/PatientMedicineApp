@@ -2,30 +2,52 @@ package com.example.patientmedicineapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
+
+import com.example.patientmedicineapp.model.AppDatabase;
+import com.example.patientmedicineapp.model.Patient;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private AppDatabase db;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initialize database
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db")
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
+                .build();
+
+        // Set welcome message
+        TextView tvWelcome = findViewById(R.id.tv_welcome);
+        List<Patient> patients = db.patientDao().getAllPatients();
+        if (!patients.isEmpty()) {
+            Patient firstPatient = patients.get(0);
+            tvWelcome.setText("Welcome, " + firstPatient.firstName + " " + firstPatient.lastName + "!");
+        }
+
         RecyclerView rvFeatures = findViewById(R.id.rv_features);
         rvFeatures.setLayoutManager(new GridLayoutManager(this, 2));
         List<FeatureAdapter.FeatureItem> features = new ArrayList<>();
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Patient Details"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Upload Prescription"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Manual Medicine Entry"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Daily Medicine Tracker"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Medicine Reminder"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Add Medicine Quantity"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Stock Status"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Upload Bill"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_launcher_foreground, "Doctor Appointments"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_patient, "Patient Details"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_prescription, "Upload Prescription"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_manual_entry, "Manual Medicine Entry"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_daily_tracker, "Daily Medicine Tracker"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_reminder, "Medicine Reminder"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_add_medicine, "Add Medicine Quantity"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_stock, "Stock Status"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_bill, "Upload Bill"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_doctor, "Doctor Appointments"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_weight, "Health Tracker"));
         FeatureAdapter adapter = new FeatureAdapter(features, position -> {
             switch (position) {

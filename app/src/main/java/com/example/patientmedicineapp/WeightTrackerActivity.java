@@ -45,22 +45,34 @@ public class WeightTrackerActivity extends AppCompatActivity implements WeightRe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weight_tracker);
 
-        // Setup action bar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Health Tracker");
+        try {
+            // Setup action bar
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setTitle("Health Tracker");
+            }
 
-        // Initialize database
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "patient_medicine_db").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+            // Initialize database
+            db = Room.databaseBuilder(getApplicationContext(), 
+                AppDatabase.class, 
+                "patient_medicine_db")
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
+                .build();
 
-        // Initialize views
-        initViews();
-        setupDatePicker();
-        
-        // Load data after views are initialized with a small delay to ensure database is ready
-        new android.os.Handler().postDelayed(() -> {
+            // Initialize views
+            initViews();
+            setupDatePicker();
+            
+            // Load data after views are initialized
             loadPatients();
             loadWeightRecords();
-        }, 500);
+        } catch (Exception e) {
+            Toast.makeText(this, "Error initializing Health Tracker: " + e.getMessage(), 
+                Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+            finish();
+        }
 
         // Setup click listeners
         btnAddWeight.setOnClickListener(v -> addWeightRecord());

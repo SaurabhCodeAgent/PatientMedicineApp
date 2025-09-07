@@ -25,7 +25,17 @@ public class Patient {
     public String country;
 
     public String getName() {
-        return firstName + " " + lastName;
+        String name = "";
+        if (firstName != null && !firstName.trim().isEmpty()) {
+            name = firstName.trim();
+        }
+        if (lastName != null && !lastName.trim().isEmpty()) {
+            if (!name.isEmpty()) {
+                name += " ";
+            }
+            name += lastName.trim();
+        }
+        return name.isEmpty() ? "Unknown Patient" : name;
     }
 
     public int getId() {
