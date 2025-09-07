@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="108dp"
-    android:height="108dp"
-    android:viewportWidth="108"
-    android:viewportHeight="108">
+    android:width="200dp"
+    android:height="50dp"
+    android:viewportWidth="800"
+    android:viewportHeight="200">
     
-    <!-- Background circle -->
+    <!-- Hand with Plus Symbol -->
     <path
-        android:fillColor="#4DD0E1"
-        android:pathData="M30,54 C30,38 43,25 59,25 C75,25 88,38 88,54 C88,70 75,83 59,83 C43,83 30,70 30,54 Z"/>
+        android:fillColor="#2AAFCC"
+        android:pathData="M60,50 C45,50 35,60 35,75 L35,85 L25,85 C20,85 15,90 15,95 L15,145 C15,150 20,155 25,155 L95,155 C100,155 105,150 105,145 L105,95 C105,90 100,85 95,85 L85,85 L85,75 C85,60 75,50 60,50 Z M60,65 C65,65 70,70 70,75 L70,85 L50,85 L50,75 C50,70 55,65 60,65 Z" />
     
-    <!-- Medical cross -->
+    <!-- MedsHandy Text -->
     <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M20,54 L25,54 L25,64 L35,64 L35,69 L25,69 L25,79 L20,79 L20,69 L10,69 L10,64 L20,64 Z"/>
+        android:fillColor="#2AAFCC"
+        android:pathData="M130,70 L150,70 L170,120 L190,70 L210,70 L180,140 L160,140 L130,70Z" /> <!-- M -->
+    <path
+        android:fillColor="#2AAFCC"
+        android:pathData="M220,70 L280,70 L280,85 L240,85 L240,95 L275,95 L275,110 L240,110 L240,125 L280,125 L280,140 L220,140Z" /> <!-- E -->
+    <path
+        android:fillColor="#2AAFCC"
+        android:pathData="M290,70 L310,70 L310,140 L290,140Z" /> <!-- D -->
+    <path
+        android:fillColor="#2AAFCC"
+        android:pathData="M320,70 L380,70 L380,85 L340,85 L340,140 L320,140Z" /> <!-- S -->
+    <path
+        android:fillColor="#2AAFCC"
+        android:pathData="M390,70 L450,70 L450,85 L410,85 L410,140 L390,140Z" /> <!-- H -->
+    <path
+        android:fillColor="#2AAFCC"
+        android:pathData="M460,70 L520,70 L520,85 L480,85 L480,140 L460,140Z" /> <!-- A -->
+    <path
+        android:fillColor="#2AAFCC"
+        android:pathData="M530,70 L590,70 L590,85 L550,85 L550,140 L530,140Z" /> <!-- N -->
+    <path
+        android:fillColor="#2AAFCC"
+        android:pathData="M600,70 L660,70 L660,85 L620,85 L620,140 L600,140Z" /> <!-- D -->
+    <path
+        android:fillColor="#2AAFCC"
+        android:pathData="M670,70 L730,70 L730,85 L690,85 L690,140 L670,140Z" /> <!-- Y -->
 </vector>

@@ -9,18 +9,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="vertical">
 
-        <TextView
+        <!-- MedsHandy Header -->
+        <include layout="@layout/header_medshandy" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Health Tracker"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_primary"
-            android:gravity="center"
-            android:layout_marginBottom="24dp" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
         <!-- Patient Selection -->
         <TextView
@@ -226,5 +224,6 @@
             android:layout_height="200dp"
             android:nestedScrollingEnabled="false" />
 
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
