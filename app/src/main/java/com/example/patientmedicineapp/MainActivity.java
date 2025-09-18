@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize UI components
         EditText etSearch = findViewById(R.id.et_search);
-        Button btnExplore = findViewById(R.id.btn_explore);
+        //Button btnExplore = findViewById(R.id.btn_explore);
 
         // Set up search functionality (placeholder for now)
         etSearch.setOnClickListener(v -> {
@@ -40,13 +40,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Set up explore button
-        btnExplore.setOnClickListener(v -> {
-            // Scroll to services section or show all features
-            RecyclerView rvFeatures = findViewById(R.id.rv_features);
-            if (rvFeatures != null) {
-                rvFeatures.smoothScrollToPosition(0);
-            }
-        });
 
         RecyclerView rvFeatures = findViewById(R.id.rv_features);
         rvFeatures.setLayoutManager(new GridLayoutManager(this, 3));

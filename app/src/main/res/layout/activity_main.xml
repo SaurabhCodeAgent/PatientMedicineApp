@@ -56,21 +56,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:alpha="0.8"
                         android:text="Your current location"
                         android:textColor="@color/white"
-                        android:textSize="12sp"
-                        android:alpha="0.8" />
+                        android:textSize="12sp" />
 
                 </LinearLayout>
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/circle_background"
-                    android:backgroundTint="@color/white"
-                    android:padding="8dp"
-                    android:src="@android:drawable/ic_menu_agenda"
-                    android:tint="@color/purple_text" />
 
             </LinearLayout>
 
@@ -98,7 +89,7 @@
                     android:layout_marginStart="12dp"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:hint="Search for medicines..."
+                    android:hint="Search for services..."
                     android:textColorHint="@color/purple_text"
                     android:textSize="14sp" />
 
@@ -120,30 +111,6 @@
                     android:textSize="24sp"
                     android:textStyle="bold"
                     android:gravity="center" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Medicine management made easy."
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:alpha="0.9" />
-
-                <Button
-                    android:id="@+id/btn_explore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/promo_card_background"
-                    android:paddingStart="24dp"
-                    android:paddingTop="12dp"
-                    android:paddingEnd="24dp"
-                    android:paddingBottom="12dp"
-                    android:text="Explore now"
-                    android:textColor="@color/purple_text"
-                    android:textStyle="bold" />
 
             </LinearLayout>
 
