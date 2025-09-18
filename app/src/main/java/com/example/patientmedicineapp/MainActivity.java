@@ -2,6 +2,8 @@ package com.example.patientmedicineapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -28,16 +30,26 @@ public class MainActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
-        // Set welcome message
-        TextView tvWelcome = findViewById(R.id.tv_welcome);
-        List<Patient> patients = db.patientDao().getAllPatients();
-        if (!patients.isEmpty()) {
-            Patient firstPatient = patients.get(0);
-            tvWelcome.setText("Welcome, " + firstPatient.firstName + " " + firstPatient.lastName + "!");
-        }
+        // Initialize UI components
+        EditText etSearch = findViewById(R.id.et_search);
+        Button btnExplore = findViewById(R.id.btn_explore);
+
+        // Set up search functionality (placeholder for now)
+        etSearch.setOnClickListener(v -> {
+            // TODO: Implement search functionality
+        });
+
+        // Set up explore button
+        btnExplore.setOnClickListener(v -> {
+            // Scroll to services section or show all features
+            RecyclerView rvFeatures = findViewById(R.id.rv_features);
+            if (rvFeatures != null) {
+                rvFeatures.smoothScrollToPosition(0);
+            }
+        });
 
         RecyclerView rvFeatures = findViewById(R.id.rv_features);
-        rvFeatures.setLayoutManager(new GridLayoutManager(this, 2));
+        rvFeatures.setLayoutManager(new GridLayoutManager(this, 3));
         List<FeatureAdapter.FeatureItem> features = new ArrayList<>();
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_patient, "Patient Details"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_prescription, "Upload Prescription"));

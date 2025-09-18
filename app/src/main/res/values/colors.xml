@@ -25,4 +25,12 @@
     <color name="medshandy_dark">#FF1E8499</color>
     <color name="medshandy_light">#FF7CCFE2</color>
     <color name="medshandy_background">#FFF5F9FA</color>
+    
+    <!-- Purple gradient colors for new design -->
+    <color name="purple_gradient_start">#FF9C7FE8</color>
+    <color name="purple_gradient_end">#FFB794F6</color>
+    <color name="purple_light">#FFEDE9FE</color>
+    <color name="purple_text">#FF6B46C1</color>
+    <color name="search_background">#FFFFFFFF</color>
+    <color name="card_shadow">#1A000000</color>
 </resources>
