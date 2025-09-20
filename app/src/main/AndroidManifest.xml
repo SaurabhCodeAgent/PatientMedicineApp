@@ -24,7 +24,6 @@
         <activity android:name=".MedicineReminderActivity" />
         <activity android:name=".AddMedicineActivity" />
         <activity android:name=".StockStatusActivity" />
-        <activity android:name=".UploadBillActivity" />
         <activity android:name=".DoctorAppointmentActivity" />
         <activity android:name=".WeightTrackerActivity" />
         <receiver android:name=".MedicineReminderReceiver" />

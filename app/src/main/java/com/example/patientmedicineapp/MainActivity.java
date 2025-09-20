@@ -29,6 +29,21 @@ public class MainActivity extends AppCompatActivity {
                 .fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build();
+        TextView headerTitleTextView = findViewById(R.id.tv_header_title);
+        String patientName = getPatientName();
+        if (patientName != null) {
+            headerTitleTextView.setText(patientName);
+        } else {
+            headerTitleTextView.setText("Meds Buddy");
+        }
+        TextView headerPateintDetailsTextView = findViewById(R.id.tv_header_details);
+        String pateintDetails  = getpatientDetails();
+        if (pateintDetails != null) {
+            headerPateintDetailsTextView.setText(pateintDetails);
+        } else {
+            headerPateintDetailsTextView.setText("Meds Details");
+        }
+
 
         // Initialize UI components
         EditText etSearch = findViewById(R.id.et_search);
@@ -51,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_reminder, "Medicine Reminder"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_add_medicine, "Add Medicine Quantity"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_stock, "Stock Status"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_bill, "Upload Bill"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_doctor, "Doctor Appointments"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_weight, "Health Tracker"));
         FeatureAdapter adapter = new FeatureAdapter(features, position -> {
@@ -78,16 +92,41 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(this, StockStatusActivity.class));
                     break;
                 case 7:
-                    startActivity(new Intent(this, UploadBillActivity.class));
-                    break;
-                case 8:
                     startActivity(new Intent(this, DoctorAppointmentActivity.class));
                     break;
-                case 9:
+                case 8:
                     startActivity(new Intent(this, WeightTrackerActivity.class));
                     break;
             }
         });
         rvFeatures.setAdapter(adapter);
     }
+
+    private String getPatientName() {
+        List<Patient> patients = db.patientDao().getAllPatients(); // Assuming getAllPatients() returns List<Patient>
+        List<String> patientNames = new ArrayList<>();
+        for (Patient p : patients) {
+            patientNames.add(p.firstName + " " + p.lastName);
+        }
+        if (!patientNames.isEmpty()) {
+            return patientNames.get(0);
+        } else {
+            return "Meds Buddy";
+        }
+    }
+
+    private String getpatientDetails() {
+        List<Patient> patients = db.patientDao().getAllPatients(); // Assuming getAllPatients() returns List<Patient>
+        List<String> patientDetails = new ArrayList<>();
+        for (Patient p : patients) {
+            patientDetails.add("Age: " + p.age + ", Gender: " + p.gender);
+        }
+        if (!patientDetails.isEmpty()) {
+            return patientDetails.get(0);
+        } else {
+            return "Meds Buddy";
+        }
+    }
+
+
 }
