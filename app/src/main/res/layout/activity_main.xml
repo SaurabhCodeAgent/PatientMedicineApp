@@ -33,10 +33,12 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@android:drawable/ic_menu_mylocation"
-                    android:tint="@color/white" />
+                    android:id="@+id/iv_profile"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/ic_profile"
+                    android:contentDescription="Notifications"
+                    android:layout_marginEnd="16dp" />
 
 
                 <LinearLayout
@@ -117,7 +119,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Stay Healthy with MedsHandy."
+                    android:text="Stay Healthy with MedsHandy"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"

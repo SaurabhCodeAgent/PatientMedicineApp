@@ -11,24 +11,17 @@
     android:minHeight="120dp">
 
     <FrameLayout
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="74dp"
+        android:layout_height="64dp"
         android:layout_marginBottom="8dp">
 
         <ImageView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:background="@drawable/circle_background"
-            android:backgroundTint="@color/purple_light" />
-
-        <ImageView
             android:id="@+id/iv_feature_icon"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_foreground"
-            android:contentDescription="Feature Icon"
-            android:tint="@color/purple_text" />
+            android:contentDescription="Feature Icon"/>
 
     </FrameLayout>
 
@@ -38,10 +31,8 @@
         android:layout_height="wrap_content"
         android:text="Feature"
         android:textSize="12sp"
-        android:textStyle="bold"
         android:textColor="@color/text_primary"
         android:gravity="center"
         android:maxLines="2"
         android:ellipsize="end" />
-
 </LinearLayout>

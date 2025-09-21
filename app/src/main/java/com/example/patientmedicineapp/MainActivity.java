@@ -59,14 +59,14 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rvFeatures = findViewById(R.id.rv_features);
         rvFeatures.setLayoutManager(new GridLayoutManager(this, 3));
         List<FeatureAdapter.FeatureItem> features = new ArrayList<>();
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_patient, "Patient Details"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_prescription, "Upload Prescription"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.pateint_details, "Patient Details"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.uploadprescription, "Upload Prescription"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_manual_entry, "Manual Medicine Entry"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_daily_tracker, "Daily Medicine Tracker"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_reminder, "Medicine Reminder"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.reminder, "Medicine Reminder"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_add_medicine, "Add Medicine Quantity"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_stock, "Stock Status"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_doctor, "Doctor Appointments"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.doctor_appointment, "Doctor Appointments"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_weight, "Health Tracker"));
         FeatureAdapter adapter = new FeatureAdapter(features, position -> {
             switch (position) {
