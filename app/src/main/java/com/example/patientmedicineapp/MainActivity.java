@@ -61,13 +61,13 @@ public class MainActivity extends AppCompatActivity {
         List<FeatureAdapter.FeatureItem> features = new ArrayList<>();
         features.add(new FeatureAdapter.FeatureItem(R.drawable.pateint_details, "Patient Details"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.uploadprescription, "Upload Prescription"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_manual_entry, "Manual Medicine Entry"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_daily_tracker, "Daily Medicine Tracker"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.medicine_entry, "Manual Medicine Entry"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.medicine_taken, "Daily Medicine Tracker"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.reminder, "Medicine Reminder"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_add_medicine, "Add Medicine Quantity"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_stock, "Stock Status"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.add_stock, "Add Medicine Quantity"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.stock_status, "Stock Status"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.doctor_appointment, "Doctor Appointments"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.ic_weight, "Health Tracker"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.health_tracker, "Health Tracker"));
         FeatureAdapter adapter = new FeatureAdapter(features, position -> {
             switch (position) {
                 case 0:
