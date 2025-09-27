@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         List<Patient> patients = db.patientDao().getAllPatients(); // Assuming getAllPatients() returns List<Patient>
         List<String> patientDetails = new ArrayList<>();
         for (Patient p : patients) {
-            patientDetails.add("Age: " + p.age + ", Gender: " + p.gender);
+            patientDetails.add(p.age + " , " + p.gender);
         }
         if (!patientDetails.isEmpty()) {
             return patientDetails.get(0);
