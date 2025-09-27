@@ -61,12 +61,12 @@ public class MainActivity extends AppCompatActivity {
         List<FeatureAdapter.FeatureItem> features = new ArrayList<>();
         features.add(new FeatureAdapter.FeatureItem(R.drawable.pateint_details, "Patient Details"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.uploadprescription, "Upload Prescription"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.medicine_entry, "Manual Medicine Entry"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.medicine_taken, "Daily Medicine Tracker"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.medicine_entry, "Medicine Entry"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.medicine_taken, "Medicine Tracker"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.reminder, "Medicine Reminder"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.add_stock, "Add Medicine Quantity"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.add_stock, "Medicine Refill"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.stock_status, "Stock Status"));
-        features.add(new FeatureAdapter.FeatureItem(R.drawable.doctor_appointment, "Doctor Appointments"));
+        features.add(new FeatureAdapter.FeatureItem(R.drawable.doctor_appointment, "Doctor Appointment"));
         features.add(new FeatureAdapter.FeatureItem(R.drawable.health_tracker, "Health Tracker"));
         FeatureAdapter adapter = new FeatureAdapter(features, position -> {
             switch (position) {

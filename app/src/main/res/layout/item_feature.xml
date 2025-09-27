@@ -12,8 +12,8 @@
 
     <FrameLayout
         android:layout_width="74dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="8dp">
+        android:layout_height="74dp"
+        android:layout_marginBottom="2dp">
 
         <ImageView
             android:id="@+id/iv_feature_icon"
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Feature"
-        android:textSize="12sp"
+        android:textSize="10sp"
         android:textColor="@color/text_primary"
         android:gravity="center"
         android:maxLines="2"
